@@ -18,7 +18,8 @@ public class Address {
     private String state;
     private String zipcode;
 
-    public Address() {
+    public Address(String id) {
+        this.id = id;
     }
 
     public Address(String id, String firstName, String lastName, String street, String city, String state, String zipcode) {

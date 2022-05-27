@@ -6,37 +6,41 @@
 package dao;
 
 import dto.Address;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
  * @author Zaw L Than
  */
 public class AddressDaoImpl implements AddressDao {
+    
+    Map<String, Address> address_book = new HashMap<>();
 
     @Override
-    public void addAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Address addAddress(String id, Address add) {
+        return address_book.put(id, add);
     }
 
     @Override
-    public void removeAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Address removeAddress(String id) {
+        return address_book.remove(id);
     }
 
     @Override
     public List<Address> getAllAddresses() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ArrayList<Address>(address_book.values());
     }
 
     @Override
     public int numberOfAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return address_book.size();
     }
 
     @Override
-    public Address findAddressByLastName() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+    public Address findAddressByLastName(String lastName) {
+        return address_book.values().stream().filter(x -> x.getLastName().equalsIgnoreCase(lastName)).findAny().get();
+    } 
 }

@@ -13,9 +13,9 @@ import java.util.List;
  * @author Zaw L Than
  */
 public interface AddressDao {
-    public void addAddress();
-    public void removeAddress();
-    public List<Address> getAllAddresses();
-    public int numberOfAddress();
-    public Address findAddressByLastName();
+    Address addAddress(String id, Address add);
+    Address removeAddress(String id);
+    List<Address> getAllAddresses();
+    int numberOfAddress();
+    Address findAddressByLastName(String lastName);
 }
